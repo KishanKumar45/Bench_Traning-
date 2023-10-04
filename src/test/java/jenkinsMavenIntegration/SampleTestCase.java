@@ -2,17 +2,18 @@ package jenkinsMavenIntegration;
 
 
 
+import org.testng.AssertJUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+@Test
 public class SampleTestCase {
 	
 	
 	@Parameters("browser")
-	@Test
 	public void lauchBrowser(String Launching_browser)
 	{
 		WebDriver driver=null;
@@ -21,13 +22,13 @@ public class SampleTestCase {
 		if(Launching_browser.contains("Chrome"))
 		{
 		
-		System.setProperty("webdriver.chrome.driver","D:\\Downloads\\Softwares\\browserDrivers\\chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\Users\kishankumar\Downloads\chromedriver_win32\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		}
 		
-		else if(Launching_browser.contains("Firefox"))
-		{System.setProperty("webdriver.chrome.driver","D:\\Downloads\\Softwares\\browserDrivers\\chromedriver\\chromedriver.exe");
+		else if(Launching_browser.contains("Chrome"))
+		{System.setProperty("webdriver.chrome.driver","C:\Users\kishankumar\Downloads\chromedriver_win32\chromedriver.exe");
 
 		driver = new ChromeDriver();
 			
@@ -37,7 +38,7 @@ public class SampleTestCase {
 		
 		System.out.println(driver.getTitle());
 		
-		Assert.assertTrue(driver.getTitle().contains("Google"),"Title match");
+		AssertJUnit.assertTrue(driver.getTitle().contains("Google"),"Title match");
 		
 		driver.quit();
 	}
